@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>AccioData</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+
+<body>
+
+<div class="chat-container">
+
+<div class="chat-header">
+AccioData
+</div>
+
+<div class="chat-box">
+
+{% for msg in msg %}
+
+    {% if msg.type == 0 %}
+        <div class="message sender">{{ msg.text | safe }}
+        </div>
+    {% else %}
+        <div class="message receiver">{{ msg.text | safe }}
+        </div>
+    {% endif %}
+
+{% endfor %}
+
+</div>
+
+<form method="POST" enctype="multipart/form-data" class="input-area">
+
+<div class="input-row">
+
+<label class="upload">
+    &#128206;
+    <input type="file" name="file" onchange="document.getElementById('file-name').innerText=this.files[0].name">
+</label>
+
+<span id="file-name">No file chosen</span>
+
+<input type="text" name="message" placeholder="Type message......">
+
+<button type="submit">&#10148;</button>
+
+</div>
+
+</form>
+
+</div>
+
+</body>
+</html>

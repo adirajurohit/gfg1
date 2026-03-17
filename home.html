@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AccioData</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family: Consolas;
+background:linear-gradient(135deg,#000002,#07060e,#000000);
+color:white;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+body::before{
+content:"";
+    position:fixed;
+    top:-50%;
+    left:-50%;
+    width:200%;
+    height:200%;
+
+    background:
+        radial-gradient(circle at 30% 40%, rgba(81, 23, 136, 0.35), transparent 40%),
+        radial-gradient(circle at 70% 60%, rgba(76, 76, 182, 0.35), transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(3, 3, 5, 0.25), transparent 45%);
+
+    filter: blur(120px);
+    animation: waveMove 18s linear infinite;
+    z-index:-1;
+}
+
+@keyframes waveMove{
+    0%{
+        transform: rotate(0deg) scale(1);
+    }
+    50%{
+        transform: rotate(180deg) scale(1.2);
+    }
+    100%{
+        transform: rotate(360deg) scale(1);
+    }
+}
+.container{
+position:relative;
+z-index:2;
+text-align:center;
+max-width:700px;
+}
+
+h1{
+font-size:80px;
+font-weight:700;
+background:linear-gradient(135deg,#a78bfa,#60a5fa);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:10px;
+}
+
+p{
+font-size:18px;
+color:#cbd5e1;
+margin-bottom:30px;
+}
+
+.btn{
+display:inline-block;
+padding:14px 28px;
+border-radius:10px;
+background:linear-gradient(135deg,#a78bfa,#7c3aed);
+color:white;
+text-decoration: none;
+font-weight:600;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:translateY(-10px);
+box-shadow:0 8px 20px rgba(167,139,250,0.4);
+}
+
+.insight ,.chart, .fast{
+    background:rgba(255,255,255,0.05); 
+    padding:20px; 
+    border-radius:12px; 
+    width:220px;
+    font-size:18px;
+    transition:0.5s;
+    border-top-left-radius: 2em;
+    border-bottom-right-radius: 2em;    
+    border:1px solid rgba(167,139,250,0.6);
+    box-shadow:0 0 10px rgba(167,139,250,0.3);
+}
+.insight:hover {
+    transform:translateY(-4px);
+    box-shadow:1em 1em 4em rgba(255, 255, 255, 0.774);
+}
+.fast:hover {
+    transform:translateY(-4px);
+    box-shadow:1em 1em 4em rgba(255, 255, 255, 0.774);
+}
+.chart:hover {
+    transform:translateY(-4px);
+    box-shadow:1em 1em 4em rgba(255, 255, 255, 0.774);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>AccioData</h1>
+
+<p id="typing"></p>
+<p>Do you know what business questions you want to ask but do not know 
+    how to write database queries or configure BI visualization settings? 
+    I am here to help you query the underlying data, select the most appropriate chart types, 
+    and render a cohesive, interactive dashboard in real-time!</p>
+
+<a href="/chat" class="btn">Start Analysing</a>
+
+
+<div style="margin-top:50px; display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+
+<div class="chart">
+<b>Auto Charts</b><br>
+<small>Generate graphs instantly</small>
+</div>
+
+<div class="insight">
+<b>AI Insights</b><br>
+<small>Understand your data</small>
+</div>
+
+<div class="fast">
+<b>Fast Analysis</b><br>
+<small>Results in seconds</small>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
+<script>
+const text = "Unlock the story behind your data.";
+let i = 0;
+
+function type(){
+if(i < text.length){
+document.getElementById("typing").innerHTML += text.charAt(i);
+i++;
+setTimeout(type, 40);
+}
+}
+type();
+</script>
